@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1018">
+  <meta name="description" content="ChemBio Lab 9 — интерактивная цифровая лаборатория по биологии и химии для учеников 9 класса Казахстана.">
+  <title>ChemBio Lab 9 — цифровая лаборатория</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <div class="app">
+    <aside class="sidebar">
+      <a class="brand" href="#" data-page="home" aria-label="ChemBio Lab 9 — главная">
+        <span class="logo">✦</span><span><b>ChemBio</b><small>LAB · 9 CLASS</small></span>
+      </a>
+      <nav aria-label="Основная навигация">
+        <button class="nav active" data-page="home">⌂ <span>Главная</span></button>
+        <button class="nav" data-page="topics">▤ <span>Учебные темы</span></button>
+        <button class="nav" data-page="labs">⚗ <span>Виртуальные лаборатории</span></button>
+        <button class="nav" data-page="quiz">◈ <span>Тесты</span></button>
+        <button class="nav" data-page="glossary">⌕ <span>Словарь</span></button>
+        <button class="nav" data-page="progress">◷ <span>Мой прогресс</span></button>
+      </nav>
+      <div class="side-bottom">
+        <div class="mini-card"><span class="spark">✧</span><b>Исследуй мир науки</b><p>Учись через объяснения, модели и практику.</p></div>
+        <small class="muted">Материалы для 9 класса Казахстана</small>
+      </div>
+    </aside>
+    <main id="main-content" tabindex="-1">
+      <header>
+        <div><span class="eyebrow">НАУЧНАЯ ПЛАТФОРМА</span><h1 id="page-title">Добро пожаловать в лабораторию</h1></div>
+        <div class="header-actions">
+          <label class="global-search"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="Поиск по сайту…" autocomplete="off" aria-label="Поиск по сайту"><kbd>Ctrl K</kbd></label>
+          <button class="icon-button" id="theme-toggle" type="button" aria-label="Включить светлую тему" title="Переключить тему">☼</button>
+          <div class="user-chip"><span class="avatar">У</span><span>Ученик <small>9 класс</small></span></div>
+        </div>
+        <div id="search-results" class="search-results" hidden></div>
+      </header>
+
+      <section id="home" class="page active">
+        <div class="hero">
+          <div><span class="pill">ИНТЕРАКТИВНАЯ ЦИФРОВАЯ ЛАБОРАТОРИЯ</span><h2>Наука становится<br><em>понятнее.</em></h2>
+            <p>Изучай химию и биологию по темам учебников 9 класса Казахстана, моделируй процессы и возвращайся к сложным темам.</p>
+            <button class="primary" data-go="topics">Продолжить обучение ↗</button>
+          </div>
+          <div class="orbital" aria-hidden="true"><div class="orbit o1"></div><div class="orbit o2"></div><div class="nucleus">⚛</div><span class="electron e1"></span><span class="electron e2"></span><span class="electron e3"></span></div>
+        </div>
+        <div class="stats-strip">
+          <article><span class="stat-icon">✦</span><span><b id="home-xp">0 XP</b><small>учебный опыт</small></span></article>
+          <article><span class="stat-icon">✓</span><span><b id="home-completed">0</b><small>тем изучено</small></span></article>
+          <article><span class="stat-icon">◈</span><span><b id="home-quizzes">0</b><small>тестов пройдено</small></span></article>
+          <article><span class="stat-icon">♡</span><span><b id="home-favorites">0</b><small>избранные темы</small></span></article>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">ТВОЯ УЧЕБНАЯ СРЕДА</span><h2>Разделы лаборатории</h2></div></div>
+        <div class="cards">
+          <article class="feature chem-card" data-go="topics" data-subject-go="chem"><div class="card-icon">⚗</div><span class="tag">ХИМИЯ</span><h3>Вещества и реакции</h3><p>Электролиты, металлы, неметаллы и органические вещества.</p><span class="card-link">Открыть раздел →</span></article>
+          <article class="feature bio-card" data-go="topics" data-subject-go="bio"><div class="card-icon">♧</div><span class="tag">БИОЛОГИЯ</span><h3>Клетка и организм</h3><p>Клеточная биология, наследственность, организм человека и экология.</p><span class="card-link">Открыть раздел →</span></article>
+          <article class="feature quiz-card" data-go="labs"><div class="card-icon">⌬</div><span class="tag">ПРАКТИКУМ</span><h3>Виртуальные лаборатории</h3><p>Исследуй модели процессов и проверяй, как меняются результаты.</p><span class="card-link">Начать эксперимент →</span></article>
+        </div>
+        <div class="resume-card" id="resume-card"></div>
+        <p class="source-note">Учебные материалы созданы своими словами по учебникам, указанным в разделе «Источники». Симуляции — учебные модели, а не реальные лабораторные эксперименты.</p>
+        <p class="source-note">Сайт — дополнительный учебный материал, а не официальный ресурс органов образования. Учителю следует сверять содержание с действующей программой и учебником школы; тесты и прогресс предназначены для самопроверки, а не для официального оценивания.</p>
+        <details class="sources"><summary>Источники учебного содержания</summary><p>Биология: Н. Г. Асанов, А. Р. Соловьева, Б. Т. Ибраимова. Учебник для 9 класса, «Атамура», 2019. <a href="https://okulyk.kz/biologija/450/" target="_blank" rel="noopener noreferrer">Страница учебника</a>.</p><p>Химия: М. Б. Усманова, К. Н. Сакарьянова, Б. Н. Сахариева. Учебник для 9 класса, «Атамура», 2019. <a href="https://okulyk.kz/himija/454/" target="_blank" rel="noopener noreferrer">Страница учебника</a>.</p><p>Дополнительные варианты учебников: <a href="https://okulyk.kz/himija/452/" target="_blank" rel="noopener noreferrer">химия (Оспанова)</a>, <a href="https://okulyk.kz/biologija/1086/" target="_blank" rel="noopener noreferrer">биология (Оспанкулова)</a>.</p></details>
+      </section>
+
+      <section id="topics" class="page">
+        <div class="section-heading"><div><span class="eyebrow">ТЕМЫ 9 КЛАССА</span><h2>Учебные темы</h2><p class="muted">Выбери предмет, чтобы открыть объяснения, определения и задания.</p></div></div>
+        <div class="topic-toolbar"><div class="subject-switch" role="tablist" aria-label="Предмет">
+          <button class="subject-tab active" data-subject="chem" role="tab" aria-selected="true">⚗ Химия</button>
+          <button class="subject-tab" data-subject="bio" role="tab" aria-selected="false">♧ Биология</button>
+        </div><button class="secondary" id="favorite-filter" type="button" aria-pressed="false">♡ Только избранное</button></div>
+        <div class="topic-layout"><div id="topic-list" class="topic-list"></div><article id="topic-detail" class="topic-detail"></article></div>
+      </section>
+
+      <section id="labs" class="page">
+        <div class="section-heading"><div><span class="eyebrow">УЧЕБНЫЕ МОДЕЛИ</span><h2>Виртуальные лаборатории</h2><p class="muted">Меняй параметры модели, наблюдай результат и объясняй его.</p></div></div>
+        <div class="lab-layout"><div id="lab-list" class="lab-list"></div><article id="lab-workspace" class="lab-workspace"></article></div>
+        <p class="source-note">Важно: это упрощённые образовательные симуляции. Они помогают понять закономерности, но не заменяют реальный эксперимент и правила техники безопасности.</p>
+      </section>
+
+      <section id="quiz" class="page">
+        <div class="section-heading"><div><span class="eyebrow">ТРЕНАЖЁР ЗНАНИЙ</span><h2>Проверка знаний</h2><p class="muted">Выбери предмет, тему и сложность. Вопросы перемешиваются случайно.</p></div></div>
+        <div class="quiz-config">
+          <label>Предмет<select id="quiz-subject"><option value="all">Все предметы</option><option value="chem">Химия</option><option value="bio">Биология</option></select></label>
+          <label>Тема<select id="quiz-topic"><option value="all">Все темы</option></select></label>
+          <label>Сложность<select id="quiz-difficulty"><option value="all">Любая</option><option value="easy">Базовая</option><option value="medium">Средняя</option><option value="hard">Повышенная</option></select></label>
+          <button id="start-quiz" class="primary">Начать тест →</button>
+        </div>
+        <div class="quiz-box" id="quiz-box"><div class="empty-state">Настрой параметры и нажми «Начать тест».</div></div>
+        <div class="section-heading"><div><span class="eyebrow">ПОСЛЕДНИЕ РЕЗУЛЬТАТЫ</span><h2>История тестов</h2></div></div>
+        <div id="quiz-history" class="history-list"></div>
+        <button class="secondary" id="retry-mistakes" type="button">Повторить ошибки</button>
+      </section>
+
+      <section id="glossary" class="page">
+        <div class="section-heading"><div><span class="eyebrow">КЛЮЧЕВЫЕ ПОНЯТИЯ</span><h2>Словарь терминов</h2><p class="muted">Краткие определения по химии и биологии.</p></div></div>
+        <div class="glossary-controls"><input id="glossary-search" type="search" placeholder="Найти термин…"><select id="glossary-subject" aria-label="Фильтр словаря"><option value="all">Все предметы</option><option value="chem">Химия</option><option value="bio">Биология</option></select></div>
+        <div id="glossary-list" class="glossary-list"></div>
+      </section>
+
+      <section id="progress" class="page">
+        <div class="section-heading"><div><span class="eyebrow">ТВОИ ДОСТИЖЕНИЯ</span><h2>Мой прогресс</h2><p class="muted">Данные хранятся в этом браузере и на этом устройстве.</p></div></div>
+        <div class="progress-overview" id="progress-overview"></div>
+        <div class="section-heading"><div><span class="eyebrow">ТЕМЫ</span><h2>Изучено недавно</h2></div></div>
+        <div id="study-history" class="history-list"></div>
+        <div class="section-heading"><div><span class="eyebrow">ТЕСТИРОВАНИЕ</span><h2>Статистика тестов</h2></div></div>
+        <div id="quiz-stats" class="progress-overview"></div>
+        <div class="section-heading"><div><span class="eyebrow">РЕЗЕРВНАЯ КОПИЯ</span><h2>Экспорт и импорт</h2></div></div>
+        <div class="backup-box"><p>Сохрани прогресс в JSON, чтобы перенести его на другое устройство. Импорт заменит текущий прогресс после проверки файла.</p><button class="primary" id="export-progress">Экспортировать JSON ↓</button><button class="secondary" id="import-progress">Импортировать JSON ↑</button><input id="import-file" type="file" accept="application/json,.json" hidden></div>
+      </section>
+      <footer>CHEMBIO LAB 9 <span>Учись · Исследуй · Открывай</span></footer>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </main>
+  </div>
+</body>
+</html>
