@@ -12,17 +12,35 @@
 </head>
 <body>
   <main class="admin-main">
+    <section class="admin-login" id="admin-login" aria-labelledby="login-title">
+      <a class="secondary back-link" href="../index.html">← Вернуться на сайт</a>
+      <span class="eyebrow">CHEMBIO LAB 9 · УПРАВЛЕНИЕ СОДЕРЖАНИЕМ</span>
+      <h1 id="login-title">Вход в администрирование</h1>
+      <p class="login-description">Введите логин и пароль, чтобы открыть редактор материалов.</p>
+      <form class="login-form" id="admin-login-form">
+        <label>Логин<input name="username" type="text" autocomplete="username" required autofocus></label>
+        <label>Пароль<input name="password" type="password" autocomplete="current-password" required></label>
+        <button class="primary" type="submit">Войти</button>
+        <p class="login-error" id="login-error" role="alert" hidden></p>
+      </form>
+      <p class="login-warning">Это только экран входа: данные для входа встроены в публичный сайт, поэтому он не защищает редактор от посторонних. Не храните здесь конфиденциальную информацию.</p>
+    </section>
+
+    <div id="admin-workspace" hidden>
     <header class="admin-header">
       <div>
         <span class="eyebrow">CHEMBIO LAB 9 · УПРАВЛЕНИЕ СОДЕРЖАНИЕМ</span>
         <h1>Администрирование</h1>
       </div>
-      <a class="secondary back-link" href="../index.html">← Вернуться на сайт</a>
+      <div class="admin-header-actions">
+        <button class="secondary" type="button" id="admin-logout">Выйти</button>
+        <a class="secondary back-link" href="../index.html">← Вернуться на сайт</a>
+      </div>
     </header>
 
     <aside class="admin-notice">
       <b>Локальный редактор содержимого</b>
-      <p>Добавленные материалы сохраняются в localStorage этого браузера и доступны сайту в том же браузерном профиле. Это статическая офлайн-админка без учётных записей и серверной защиты: не публикуйте её как защищённый административный интерфейс.</p>
+      <p>Материалы сохраняются в localStorage этого браузера. Экран входа не является защитой: логин и пароль находятся в исходном коде и доступны посетителям.</p>
     </aside>
 
     <nav class="admin-tabs" aria-label="Разделы редактора">
@@ -102,6 +120,7 @@
       <input id="content-file" type="file" accept="application/json,.json" hidden>
     </section>
     <div class="admin-toast" id="admin-toast" role="status" aria-live="polite"></div>
+    </div>
   </main>
 </body>
 </html>
