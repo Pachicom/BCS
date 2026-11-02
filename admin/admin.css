@@ -1,0 +1,50 @@
+.admin-main { max-width: 1160px; margin: 0 auto; padding-top: 30px; }
+.admin-header { align-items: center; }
+.back-link { text-decoration: none; white-space: nowrap; }
+.admin-notice { margin: 0 0 20px; padding: 15px 17px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); font-size: 13px; }
+.admin-notice p, .admin-section-heading p, .admin-backup p { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.admin-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 14px; }
+.admin-tab { padding: 10px 15px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); color: var(--muted); cursor: pointer; }
+.admin-tab.active { border-color: var(--purple); background: var(--accent-soft); color: var(--purple); }
+.admin-panel { padding: 20px; border: 1px solid var(--line); border-radius: 15px; background: var(--panel); }
+.admin-panel[hidden], .editor-form[hidden] { display: none; }
+.admin-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 15px; }
+.admin-section-heading h2, .admin-backup h2 { margin: 0; font-size: 19px; }
+.admin-section-heading .primary { flex-shrink: 0; }
+.editor-form { margin: 12px 0 18px; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel-2); }
+.form-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+.form-grid label { display: grid; align-content: start; gap: 6px; color: var(--muted); font-size: 11px; }
+.form-grid input, .form-grid textarea, .form-grid select { width: 100%; padding: 10px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); }
+.form-grid textarea { min-height: 82px; resize: vertical; line-height: 1.6; }
+.form-grid .form-wide { grid-column: 1 / -1; }
+.form-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 13px; }
+.form-actions .primary, .form-actions .secondary { margin: 0; }
+.admin-table-wrap { max-width: 100%; overflow-x: auto; }
+.admin-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.admin-table th, .admin-table td { min-width: 90px; padding: 10px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
+.admin-table th { background: var(--panel-2); color: var(--muted); font-weight: 600; }
+.admin-table td.description-cell { min-width: 180px; max-width: 400px; color: var(--muted); line-height: 1.6; overflow-wrap: anywhere; }
+.actions-cell { min-width: 190px !important; white-space: nowrap; }
+.actions-cell button { margin: 0 5px 4px 0; padding: 7px 9px; font-size: 10px; }
+.danger-button { padding: 8px 10px; border: 1px solid #a34a58; border-radius: 8px; background: transparent; color: var(--danger); cursor: pointer; }
+.danger-button:hover { background: color-mix(in srgb,var(--danger) 12%,transparent); }
+.admin-panel > .empty-state { color: var(--muted); text-align: center; }
+.admin-backup { margin: 17px 0 35px; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+.admin-backup .danger-button { margin: 7px 0 0; }
+.admin-toast { position: fixed; right: 20px; bottom: 20px; z-index: 20; max-width: min(440px,calc(100vw - 32px)); padding: 12px 15px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); box-shadow: 0 10px 35px #0003; opacity: 0; pointer-events: none; transform: translateY(8px); transition: .2s; }
+.admin-toast.show { opacity: 1; transform: translateY(0); }
+.admin-link { display: block; margin: 0 0 12px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); font-size: 11px; text-decoration: none; }
+.admin-link:hover { border-color: var(--purple); color: var(--purple); }
+@media (max-width: 760px) {
+  .admin-main { padding: 18px 14px; }
+  .admin-header { align-items: flex-start; }
+  .admin-section-heading { align-items: flex-start; flex-direction: column; }
+  .admin-panel { padding: 14px; }
+}
+@media (max-width: 480px) {
+  .admin-header { flex-direction: column; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-grid .form-wide { grid-column: auto; }
+  .admin-tabs { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .admin-tab { padding: 9px 5px; font-size: 11px; }
+}

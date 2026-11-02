@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1018">
+  <title>Администрирование · ChemBio Lab 9</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="admin.css">
+  <script src="../data.js" defer></script>
+  <script src="admin.js" defer></script>
+</head>
+<body>
+  <main class="admin-main">
+    <header class="admin-header">
+      <div>
+        <span class="eyebrow">CHEMBIO LAB 9 · УПРАВЛЕНИЕ СОДЕРЖАНИЕМ</span>
+        <h1>Администрирование</h1>
+      </div>
+      <a class="secondary back-link" href="../index.html">← Вернуться на сайт</a>
+    </header>
+
+    <aside class="admin-notice">
+      <b>Локальный редактор содержимого</b>
+      <p>Добавленные материалы сохраняются в localStorage этого браузера и доступны сайту в том же браузерном профиле. Это статическая офлайн-админка без учётных записей и серверной защиты: не публикуйте её как защищённый административный интерфейс.</p>
+    </aside>
+
+    <nav class="admin-tabs" aria-label="Разделы редактора">
+      <button class="admin-tab active" type="button" data-tab="glossary">Словарь</button>
+      <button class="admin-tab" type="button" data-tab="topics">Учебные темы</button>
+      <button class="admin-tab" type="button" data-tab="questions">Вопросы тестов</button>
+    </nav>
+
+    <section class="admin-panel active" id="panel-glossary">
+      <div class="admin-section-heading">
+        <div><h2>Словарь терминов</h2><p>Добавляй и редактируй определения для поиска и фильтрации по предмету.</p></div>
+        <button class="primary" type="button" id="add-glossary">+ Добавить термин</button>
+      </div>
+      <form class="editor-form" id="glossary-form" hidden>
+        <input type="hidden" name="id">
+        <div class="form-grid">
+          <label>Термин<input name="term" required maxlength="100" placeholder="Например, осмос"></label>
+          <label>Предмет<select name="subject" required><option value="chem">Химия</option><option value="bio">Биология</option></select></label>
+          <label class="form-wide">Определение<textarea name="meaning" required maxlength="1200" rows="3" placeholder="Краткое точное объяснение термина"></textarea></label>
+        </div>
+        <div class="form-actions"><button class="primary" type="submit">Сохранить термин</button><button class="secondary" type="button" data-cancel="glossary">Отмена</button></div>
+      </form>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Термин</th><th>Предмет</th><th>Определение</th><th>Действия</th></tr></thead><tbody id="glossary-rows"></tbody></table></div>
+      <p class="empty-state" id="glossary-empty" hidden>Дополнительных терминов пока нет.</p>
+    </section>
+
+    <section class="admin-panel" id="panel-topics" hidden>
+      <div class="admin-section-heading">
+        <div><h2>Учебные темы</h2><p>Создавай свои темы с кратким объяснением. Они появятся в учебном разделе и поиске.</p></div>
+        <button class="primary" type="button" id="add-topic">+ Добавить тему</button>
+      </div>
+      <form class="editor-form" id="topic-form" hidden>
+        <input type="hidden" name="id">
+        <div class="form-grid">
+          <label>Предмет<select name="subject" required><option value="chem">Химия</option><option value="bio">Биология</option></select></label>
+          <label>Название темы<input name="title" required maxlength="120" placeholder="Название темы"></label>
+          <label class="form-wide">Краткое описание<input name="summary" required maxlength="220" placeholder="Описание в списке тем"></label>
+          <label class="form-wide">Учебный материал<textarea name="description" required maxlength="12000" rows="8" placeholder="Объяснение темы своими словами. Разделяй мысли на абзацы."></textarea></label>
+        </div>
+        <div class="form-actions"><button class="primary" type="submit">Сохранить тему</button><button class="secondary" type="button" data-cancel="topics">Отмена</button></div>
+      </form>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Тема</th><th>Предмет</th><th>Описание</th><th>Действия</th></tr></thead><tbody id="topic-rows"></tbody></table></div>
+      <p class="empty-state" id="topic-empty" hidden>Дополнительных тем пока нет.</p>
+    </section>
+
+    <section class="admin-panel" id="panel-questions" hidden>
+      <div class="admin-section-heading">
+        <div><h2>Вопросы тестов</h2><p>Добавляй вопрос, тему, сложность, варианты ответа и объяснение. Вопрос включается в общий тест и фильтры темы.</p></div>
+        <button class="primary" type="button" id="add-question">+ Добавить вопрос</button>
+      </div>
+      <form class="editor-form" id="question-form" hidden>
+        <input type="hidden" name="id">
+        <div class="form-grid">
+          <label>Предмет<select name="subject" required><option value="chem">Химия</option><option value="bio">Биология</option></select></label>
+          <label>Тема<select name="topic" required></select></label>
+          <label>Сложность<select name="difficulty" required><option value="easy">Базовая</option><option value="medium">Средняя</option><option value="hard">Повышенная</option></select></label>
+          <label class="form-wide">Вопрос<textarea name="question" required maxlength="700" rows="2"></textarea></label>
+          <label>Вариант A<input name="option0" required maxlength="300"></label>
+          <label>Вариант B<input name="option1" required maxlength="300"></label>
+          <label>Вариант C<input name="option2" required maxlength="300"></label>
+          <label>Вариант D<input name="option3" required maxlength="300"></label>
+          <label>Правильный вариант<select name="answer" required><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select></label>
+          <label class="form-wide">Объяснение ответа<textarea name="explanation" required maxlength="1200" rows="3"></textarea></label>
+        </div>
+        <div class="form-actions"><button class="primary" type="submit">Сохранить вопрос</button><button class="secondary" type="button" data-cancel="questions">Отмена</button></div>
+      </form>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Вопрос</th><th>Тема</th><th>Сложность</th><th>Действия</th></tr></thead><tbody id="question-rows"></tbody></table></div>
+      <p class="empty-state" id="question-empty" hidden>Дополнительных вопросов пока нет.</p>
+    </section>
+
+    <section class="admin-backup">
+      <h2>Резервная копия материалов</h2>
+      <p>Экспортируй добавленные темы, термины и вопросы в JSON. Импорт заменит список пользовательских материалов после проверки файла.</p>
+      <button class="secondary" type="button" id="export-content">Экспортировать JSON ↓</button>
+      <button class="secondary" type="button" id="import-content">Импортировать JSON ↑</button>
+      <button class="danger-button" type="button" id="clear-content">Удалить все добавленные материалы</button>
+      <input id="content-file" type="file" accept="application/json,.json" hidden>
+    </section>
+    <div class="admin-toast" id="admin-toast" role="status" aria-live="polite"></div>
+  </main>
+</body>
+</html>
