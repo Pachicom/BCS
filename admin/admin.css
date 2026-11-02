@@ -1,5 +1,16 @@
 .admin-main { max-width: 1160px; margin: 0 auto; padding-top: 30px; }
 .admin-header { align-items: center; }
+.admin-header-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.admin-login { width: min(100%, 430px); margin: min(12vh, 100px) auto; padding: 28px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); }
+.admin-login > .back-link { display: inline-flex; margin-bottom: 30px; }
+.admin-login h1 { margin: 8px 0; }
+.login-description { color: var(--muted); font-size: 13px; line-height: 1.6; }
+.login-form { display: grid; gap: 13px; margin-top: 22px; }
+.login-form label { display: grid; gap: 6px; color: var(--muted); font-size: 12px; }
+.login-form input { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); color: var(--text); }
+.login-form .primary { margin: 2px 0 0; }
+.login-error { margin: 0; color: var(--danger); font-size: 12px; }
+.login-warning { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; line-height: 1.6; }
 .back-link { text-decoration: none; white-space: nowrap; }
 .admin-notice { margin: 0 0 20px; padding: 15px 17px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); font-size: 13px; }
 .admin-notice p, .admin-section-heading p, .admin-backup p { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
@@ -38,6 +49,8 @@
 @media (max-width: 760px) {
   .admin-main { padding: 18px 14px; }
   .admin-header { align-items: flex-start; }
+  .admin-header-actions { justify-content: flex-start; }
+  .admin-login { margin: 8vh auto; padding: 22px; }
   .admin-section-heading { align-items: flex-start; flex-direction: column; }
   .admin-panel { padding: 14px; }
 }
