@@ -1,6 +1,53 @@
 (() => {
   "use strict";
 
+  const SESSION_KEY = "chembio-lab9-admin-session";
+  const ADMIN_USERNAME = "admin";
+  const ADMIN_PASSWORD = "admin";
+  const loginScreen = document.getElementById("admin-login");
+  const workspace = document.getElementById("admin-workspace");
+  const loginForm = document.getElementById("admin-login-form");
+  const loginError = document.getElementById("login-error");
+  const logoutButton = document.getElementById("admin-logout");
+  const usernameInput = loginForm.elements.namedItem("username");
+
+  function showWorkspace(isAuthenticated) {
+    loginScreen.hidden = isAuthenticated;
+    workspace.hidden = !isAuthenticated;
+  }
+
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const form = new FormData(loginForm);
+    if (form.get("username") !== ADMIN_USERNAME || form.get("password") !== ADMIN_PASSWORD) {
+      loginError.textContent = "Неверный логин или пароль.";
+      loginError.hidden = false;
+      loginForm.elements.namedItem("password").value = "";
+      loginForm.elements.namedItem("password").focus();
+      return;
+    }
+
+    try {
+      sessionStorage.setItem(SESSION_KEY, "authenticated");
+      window.location.reload();
+    } catch (error) {
+      loginError.textContent = `Не удалось сохранить состояние входа: ${error.message}`;
+      loginError.hidden = false;
+    }
+  });
+
+  logoutButton.addEventListener("click", () => {
+    sessionStorage.removeItem(SESSION_KEY);
+    window.location.reload();
+  });
+
+  const isAuthenticated = sessionStorage.getItem(SESSION_KEY) === "authenticated";
+  showWorkspace(isAuthenticated);
+  if (!isAuthenticated) {
+    usernameInput.focus();
+    return;
+  }
+
   const CONTENT_KEY = "chembio-lab9-admin-content-v1";
   const base = window.CHEMBIO_DATA;
   const initial = loadContent();
