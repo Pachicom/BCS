@@ -49,6 +49,8 @@ a { color: var(--purple); }
 .nav { border: 0; border-radius: 10px; padding: 12px 13px; background: transparent; color: var(--muted); text-align: left; cursor: pointer; transition: .18s; }
 .nav span { margin-left: 9px; }
 .nav.active, .nav:hover { background: var(--accent-soft); color: var(--purple); }
+.admin-link { display: block; margin: 0 3px 12px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); font-size: 12px; text-decoration: none; }
+.admin-link:hover, .admin-link:focus-visible { color: var(--purple); border-color: var(--purple); }
 .side-bottom { margin-top: auto; }
 .mini-card { margin: 0 3px 20px; padding: 15px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg,#1e2036,#15252d); }
 [data-theme="light"] .mini-card { background: linear-gradient(145deg,#f1edff,#e6f7f5); }
